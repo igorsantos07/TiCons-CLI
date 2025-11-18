@@ -5,15 +5,10 @@
 
 var _ = require('underscore'),
 	program = require('commander'),
-	updateNotifier = require('update-notifier'),
 	pkg = require('./package.json'),
 	ticons = require('./'),
 	constants = require('./lib/constants'),
 	logger = require('./lib/logger');
-
-var notifier = updateNotifier({
-	pkg: pkg
-});
 
 program
 	.version(pkg.version, '-v, --version')
@@ -59,14 +54,10 @@ program.command('assets [input]')
 program.parse(process.argv);
 
 if (program.args.length === 0 || typeof program.args[program.args.length - 1] === 'string') {
-	notifier.update && notifier.notify();
-
 	program.help();
 }
 
 function assets(input, env) {
-	notifier.update && notifier.notify();
-
 	var options = _filterOptions(env);
 
 	options.cli = true;
@@ -82,8 +73,6 @@ function assets(input, env) {
 }
 
 function icons(input, env) {
-	notifier.update && notifier.notify();
-
 	var options = _filterOptions(env);
 
 	options.cli = true;
@@ -99,8 +88,6 @@ function icons(input, env) {
 }
 
 function adaptiveicons(input, env) {
-	notifier.update && notifier.notify();
-
 	var options = _filterOptions(env);
 
 	options.cli = true;
@@ -116,8 +103,6 @@ function adaptiveicons(input, env) {
 }
 
 function splashes(input, env) {
-	notifier.update && notifier.notify();
-
 	var options = _filterOptions(env);
 
 	options.cli = true;
